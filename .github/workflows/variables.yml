@@ -20,11 +20,10 @@ jobs:
     name: A job to say hello
     steps:
       - uses: actions/checkout@v4
-      - run: echo $GITHUB_ENV
-        shell: bash
-      - run: echo "APP_RANDOM=$RANDOM" >> $GITHUB_ENV
-        shell: bash
-      - run: echo $GITHUB_ENV
+      - run: |
+           NUMBER_RANDOM=$RANDOM
+           echo "APP_RANDOM=$NUMBER_RANDOM" >> $GITHUB_ENV
+           echo "$NUMBER_RANDOM"
         shell: bash
       - id: foo
         uses: abielalejandro/github-actions-variables/action1@main
