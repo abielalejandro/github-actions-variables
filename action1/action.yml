@@ -21,3 +21,7 @@ runs:
       shell: bash
     - run: echo "adios"
       shell: bash
+    - id: foo2
+      uses: abielalejandro/github-actions-variables/action2@main
+      with:
+        who-to-greet: 'Romerd'
