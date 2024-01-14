@@ -12,6 +12,8 @@ outputs:
 runs:
   using: "composite"
   steps:
+    - run: echo $GITHUB_ENV
+      shell: bash
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - id: random-number-generator
@@ -19,7 +21,7 @@ runs:
       shell: bash
     - run: echo "${{ github.action_path }}" >> $GITHUB_PATH
       shell: bash
-    - run: echo "adios"
+    - run: echo "adios $APP_RANDOM action1"
       shell: bash
     - id: foo2
       uses: abielalejandro/github-actions-variables/action2@main
