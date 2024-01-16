@@ -10,8 +10,10 @@ on:
         type: string
 
 jobs:
-  - name: paso
-  uses: abielalejandro/github-actions-variables/action1@main
-  with:
-    who-to-greet: 'Mona the Octocat'
-    env-vars: "${{ toJson(inputs.envs-context) }}"
+  reusable_workflow_job:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: abielalejandro/github-actions-variables/action1@main
+        with:
+          who-to-greet: 'Mona the Octocat'
+          envs-vars: ${{ inputs.envs-context }}
