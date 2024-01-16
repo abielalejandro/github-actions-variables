@@ -8,11 +8,10 @@ on:
         required: false
         default: ""
         type: string
+
 jobs:
-  runs-on: ubuntu-latest
-  steps:
-    - name: paso
-      uses: abielalejandro/github-actions-variables/action1@main
-      with:
-        who-to-greet: 'Mona the Octocat'
-        env-vars: "${{ toJson(inputs.envs-context) }}"
+  - name: paso
+  uses: abielalejandro/github-actions-variables/action1@main
+  with:
+    who-to-greet: 'Mona the Octocat'
+    env-vars: "${{ toJson(inputs.envs-context) }}"
