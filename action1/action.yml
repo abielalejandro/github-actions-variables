@@ -18,7 +18,7 @@ runs:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
     - run: |
-       echo inputs.env-vars
+       echo ${{ inputs.env-vars }}
        function process_context() {
           local CONTEXT=$1
           local CONTEXT_OUTPUT=$(echo "${CONTEXT}" | jq -r 'to_entries[] | "\(.key)=" + if .value | test("[\r\n\"]") then (.value | @json) else (.value | tostring) end')
