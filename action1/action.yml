@@ -17,7 +17,7 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - run: echo  {{ toJson(fromJson("{\"PEPE\":\"pepe\"}")) }}
+    - run: echo  {{ toJson(fromJson(inputs.env-vars)) }}
       shell: bash
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
