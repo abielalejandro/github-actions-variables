@@ -29,9 +29,9 @@ runs:
               fi
           done <<< "$CONTEXT_OUTPUT"
 
-          temp_file=$CONTEXT_OUTPUT
-          cat "$temp_file"
-          cat "$temp_file" >> "$GITHUB_ENV"
+          echo $CONTEXT_OUTPUT >> tmp
+          cat tmp
+          cat tmp >> "$GITHUB_ENV"
         }
          ENVS_CONTEXT_UNESCAPED="${{ inputs.env-vars != '' && toJson(fromJson(inputs.env-vars)) || '' }}"
          process_context "$ENVS_CONTEXT_UNESCAPED"
