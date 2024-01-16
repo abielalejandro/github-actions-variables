@@ -17,7 +17,24 @@ runs:
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
       shell: bash
-    - run: echo  {{ toJson(fromJson(inputs.env-vars)) }}
+    - run: |
+       function process_context() {
+          local CONTEXT=$1
+          local CONTEXT_OUTPUT=$(echo "${CONTEXT}" | jq -r 'to_entries[] | "\(.key)=" + if .value | test("[\r\n\"]") then (.value | @json) else (.value | tostring) end')
+          echo "$CONTEXT_OUTPUT"
+          while IFS='=' read -r var_name var_value; do
+              if [[ -n $var_name && -n $var_value ]]; then
+                  eval "$var_name='$(echo $var_value | sed 's/^"\(.*\)"$/\1/' | sed 's/\\"/"/g')'"
+              fi
+          done <<< "$CONTEXT_OUTPUT"
+
+          temp_file=$(expand_args "$CONTEXT_OUTPUT")
+          cat "$temp_file"
+          cat "$temp_file" >> "$GITHUB_ENV"
+        }
+         ENVS_CONTEXT_UNESCAPED=${{ inputs.env-vars != '' && toJson(fromJson(inputs.env-vars)) || '' }}
+         echo $ENVS_CONTEXT_UNESCAPED
+         process_context "$ENVS_CONTEXT_UNESCAPED"
       shell: bash
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
