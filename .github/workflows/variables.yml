@@ -26,7 +26,6 @@ jobs:
            echo ${{ vars.ACCESS_ID }}
       - run: |
            NUMBER_RANDOM=$RANDOM
-           echo "APP_RANDOM=$NUMBER_RANDOM" >> $GITHUB_ENV
            echo "$NUMBER_RANDOM"
         shell: bash
       - id: foo
