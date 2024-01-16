@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 
 env:
-  ACCESS_ID: ${{ vars.ACCESS_ID }}
+  ACCESS_ID: "${{ vars.ACCESS_ID }}"
   ROMERD: "2234"
 
 jobs:
