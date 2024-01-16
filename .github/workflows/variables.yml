@@ -24,7 +24,7 @@ jobs:
            echo ${{ env.ACCESS_ID }}
            echo ${{ vars.ACCESS_ID }}
       - run: |
-           echo "${{ toJson(vars) }}"
+           echo {{ toJson(fromJson("{\"PEPE\":\"pepe\"}")) }}
         shell: bash
       - id: foo
         env: 
