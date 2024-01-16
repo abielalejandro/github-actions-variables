@@ -5,6 +5,9 @@ inputs:
     description: 'Who to greet'
     required: true
     default: 'World'
+  env-vars:
+    required: false
+    default: ""  
 outputs:
   random-number:
     description: "Random number"
@@ -13,6 +16,8 @@ runs:
   using: "composite"
   steps:
     - run: echo Hello ${{ inputs.who-to-greet }}.
+      shell: bash
+    - run: echo  {{ toJson(fromJson("{\"PEPE\":\"pepe\"}")) }}
       shell: bash
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
