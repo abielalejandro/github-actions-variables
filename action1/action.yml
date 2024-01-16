@@ -33,7 +33,7 @@ runs:
           cat "$temp_file"
           cat "$temp_file" >> "$GITHUB_ENV"
         }
-         ENVS_CONTEXT_UNESCAPED=${{ inputs.env-vars != '' && toJson(fromJson(inputs.env-vars)) || '' }}
+         ENVS_CONTEXT_UNESCAPED="${{ inputs.env-vars != '' && toJson(fromJson(inputs.env-vars)) || '' }}"
          process_context "$ENVS_CONTEXT_UNESCAPED"
       shell: bash
     - id: random-number-generator
