@@ -21,6 +21,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: |
+           echo {{ env }}
+      - run: |
            NUMBER_RANDOM=$RANDOM
            echo "APP_RANDOM=$NUMBER_RANDOM" >> $GITHUB_ENV
            echo "$NUMBER_RANDOM"
