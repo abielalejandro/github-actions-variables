@@ -10,8 +10,6 @@ env:
 
 jobs:
   hello_world_job:
-    uses: abielalejandro/github-actions-variables/.github/workflows/otro.yml
-    secrets: inherit
+    uses: abielalejandro/github-actions-variables/.github/workflows/otro.yml@main
     with:
-      who-to-greet: 'Mona the Octocat'
-      env-vars: "${{ toJson(env) }}"
+      envs-context: "${{ toJson(vars) }}"
