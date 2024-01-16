@@ -19,7 +19,7 @@ runs:
       shell: bash
     - run: |
        function process_context() {
-          ECHO "EN LA FUNCION"
+          echo "EN LA FUNCION"
           local CONTEXT=$1
           local CONTEXT_OUTPUT=$(echo "${CONTEXT}" | jq -r 'to_entries[] | "\(.key)=" + if .value | test("[\r\n\"]") then (.value | @json) else (.value | tostring) end')
           echo "$CONTEXT_OUTPUT"
