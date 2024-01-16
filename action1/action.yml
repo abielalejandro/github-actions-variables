@@ -29,7 +29,7 @@ runs:
               fi
           done <<< "$CONTEXT_OUTPUT"
 
-          temp_file=$(expand_args "$CONTEXT_OUTPUT")
+          temp_file=$(echo "$CONTEXT_OUTPUT")
           cat "$temp_file"
           cat "$temp_file" >> "$GITHUB_ENV"
         }
