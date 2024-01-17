@@ -10,14 +10,14 @@ env:
 jobs:
   pre:
     outputs:
-     output1: ${{ steps.uno.outputs.ROMERD }}
+     token: ${{ steps.uno.outputs.token }}
     runs-on: ubuntu-latest
     steps:
       - name: uno
         id: uno
-        run: echo "::set-output name=ROMERD::123" >> "$GITHUB_OUTPUT"
+        run: echo "::set-output name=token::123"
   hello_world_job:
-    needs: pre
+    needs: [ pre ]
     uses: abielalejandro/github-actions-variables/.github/workflows/otro.yml@main
     with:
-      envs-context: "${{ toJson(needs.pre.outputs.output1) }}"
+      envs-context: ${{ toJson(needs.pre.outputs.token) }}
