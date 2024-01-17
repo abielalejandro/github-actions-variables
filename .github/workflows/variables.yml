@@ -17,7 +17,7 @@ jobs:
         id: uno
         run: echo "token=123">> $GITHUB_OUTPUT
       - name: dos
-        run: echo "${{ toJson(steps.uno.outputs.token)}}"
+        run: echo "${{ toJson(steps.uno.outputs)}}"
   hello_world_job:
     needs: [ pre ]
     uses: abielalejandro/github-actions-variables/.github/workflows/otro.yml@main
