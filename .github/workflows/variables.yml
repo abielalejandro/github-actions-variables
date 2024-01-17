@@ -8,7 +8,16 @@ env:
   ROMERD: "2234"
 
 jobs:
+  pre:
+    outputs:
+     output1: ${{ steps.uno.outputs.ROMERD }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: uno
+        id: uno
+        run: echo "ROMERD=123"
   hello_world_job:
+    needs: pre
     uses: abielalejandro/github-actions-variables/.github/workflows/otro.yml@main
     with:
-      envs-context: "${{ toJson(vars) }}"
+      envs-context: "${{ toJson(needs.pre.outputs.output1) }}"
