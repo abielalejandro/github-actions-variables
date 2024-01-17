@@ -10,7 +10,7 @@ env:
 jobs:
   pre:
     outputs:
-     token: ${{ toJson(steps.uno.outputs) }}
+     token: ${{ steps.uno.outputs.token }}
     runs-on: ubuntu-latest
     steps:
       - name: uno
@@ -20,4 +20,4 @@ jobs:
     needs: [ pre ]
     uses: abielalejandro/github-actions-variables/.github/workflows/otro.yml@main
     with:
-      envs-context: ${{ needs.pre.outputs.token }}
+      envs-context: ${{ toJson(needs.pre.outputs.token) }}
