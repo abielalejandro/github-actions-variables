@@ -34,7 +34,7 @@ runs:
           #cat tmp >> "$GITHUB_ENV"
         }
          ENVS_CONTEXT_UNESCAPED=${{ inputs.env-vars != '' && toJson(fromJson(inputs.env-vars)) || '' }}
-         process_context "'$ENVS_CONTEXT_UNESCAPED'"
+         process_context ${ENVS_CONTEXT_UNESCAPED}
       shell: bash
     - id: random-number-generator
       run: echo "random-number=$(echo $RANDOM)" >> $GITHUB_OUTPUT
