@@ -27,4 +27,4 @@ jobs:
     needs: [ pre ]
     uses: abielalejandro/github-actions-variables/.github/workflows/otro.yml@main
     with:
-      envs-context:  '{"123":"abc","231":"dbh","452":"xyz"}'
+      envs-context:  '{"uno":"abc","dos":"dbh","tres":"xyz"}'
