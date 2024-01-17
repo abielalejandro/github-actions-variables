@@ -27,4 +27,4 @@ jobs:
     needs: [ pre ]
     uses: abielalejandro/github-actions-variables/.github/workflows/otro.yml@main
     with:
-      envs-context: "${{toJson(needs.pre.outputs)}}"
+      envs-context: "token=123"
