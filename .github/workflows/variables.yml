@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: pre
     steps:
-      - run: echo ${{ toJson(needs.pre.outputs.token) }}
+      - run: echo ${{ toJson(needs.pre.outputs) }}
   hello_world_job:
     needs: [ pre ]
     uses: abielalejandro/github-actions-variables/.github/workflows/otro.yml@main
